@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"io/fs"
+	"log"
 	"path/filepath"
 )
 
@@ -25,4 +26,11 @@ func main() {
 	for _, file := range files {
 		fmt.Println(file)
 	}
+	dir, err := filepath.Abs("operators/arithmetic/")
+	if err != nil {
+		log.Println(err)
+	}
+
+	log.Println(filepath.Join("golang", "files"))
+	log.Println(filepath.Join(dir, "/files", "//read"))
 }

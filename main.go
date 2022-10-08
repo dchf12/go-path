@@ -2,20 +2,27 @@ package main
 
 import (
 	"fmt"
-	"path"
+	"io/fs"
 	"path/filepath"
-	"strings"
 )
 
 func main() {
-	fileName := "main.go"
-	dir, err := filepath.Abs(fileName)
+	var files []string
+	dirPath := "."
+	err := filepath.WalkDir(dirPath, func(path string, info fs.DirEntry, err error) error {
+		dirName := filepath.Base(dirPath)
+		if info.IsDir() == true && info.Name() != dirName {
+			return filepath.SkipDir
+		} else {
+			files = append(files, path)
+			return nil
+		}
+	})
+
 	if err != nil {
-		fmt.Println(err)
-	} else {
-		fe := path.Ext(dir)
-		fmt.Println(fe)
-		fmt.Println(strings.TrimSuffix(dir, fe))
-		fmt.Println(strings.TrimSuffix(fileName, fe))
+		panic(err)
+	}
+	for _, file := range files {
+		fmt.Println(file)
 	}
 }

@@ -2,11 +2,13 @@ package main
 
 import (
 	"fmt"
-	"os"
+	"path/filepath"
 )
 
 func main() {
-	dir, err := os.UserHomeDir()
+	fileName := "default.md"
+	fmt.Println(fileName)
+	dir, err := filepath.Abs(fileName)
 	if err != nil {
 		fmt.Println(err)
 	} else {

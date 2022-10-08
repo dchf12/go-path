@@ -12,10 +12,11 @@ func main() {
 	if err != nil {
 		fmt.Println(err)
 	} else {
-		if _, err := os.Stat(path); os.IsNotExist(err) {
+		if t, err := os.Stat(path); os.IsNotExist(err) {
 			fmt.Println("No, " + path + " does not exists")
 		} else {
 			fmt.Println("Yes, " + path + " exists")
+			fmt.Println(t.IsDir())
 		}
 	}
 }

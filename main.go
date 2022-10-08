@@ -6,7 +6,7 @@ import (
 )
 
 func main() {
-	dir, err := os.Getwd()
+	dir, err := os.UserHomeDir()
 	if err != nil {
 		fmt.Println(err)
 	} else {

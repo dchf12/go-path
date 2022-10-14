@@ -8,6 +8,7 @@ import (
 )
 
 func main() {
+	v := 1
 	var files []string
 	dirPath := "."
 	err := filepath.WalkDir(dirPath, func(path string, info fs.DirEntry, err error) error {

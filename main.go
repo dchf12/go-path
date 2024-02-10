@@ -12,7 +12,7 @@ func main() {
 	dirPath := "."
 	err := filepath.WalkDir(dirPath, func(path string, info fs.DirEntry, err error) error {
 		dirName := filepath.Base(dirPath)
-		if info.IsDir() == true && info.Name() != dirName {
+		if info.IsDir() && info.Name() != dirName {
 			return filepath.SkipDir
 		} else {
 			files = append(files, path)
